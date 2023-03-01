@@ -28,7 +28,9 @@ jobs:
           sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf
       - name: install app dependencies and build it
         run: npm install
-      - uses: tauri-apps/tauri-action@fix/runner
+      - run: cargo check
+        working-directory: tauri-project/src-tauri/
+      - uses: tauri-apps/tauri-action@fix/tauri-dir-resolution
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
