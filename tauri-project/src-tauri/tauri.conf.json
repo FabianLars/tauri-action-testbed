@@ -45,7 +45,9 @@
             "csp": null
         },
         "updater": {
-            "active": false
+            "active": true,
+            "endpoints": "https://github.com/FabianLars/tauri-action-testbed/whatever",
+            "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDMzRDVEM0RDOURFRUY2NDgKUldSSTl1NmQzTlBWTTRXNzZtUVBBSElGVllzRFBkdUZOUWJNc3N3dk9DaHcwZm8vaEc1L0Y4WGgK"
         },
         "windows": [
             {
