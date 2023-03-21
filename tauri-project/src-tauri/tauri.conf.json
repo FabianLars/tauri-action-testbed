@@ -7,8 +7,8 @@
         "distDir": "../dist"
     },
     "package": {
-        "productName": "tauri-action-testbed",
-        "version": "0.1.0"
+        "productName": "Selection Poste ENM",
+        "version": "0.9.9"
     },
     "tauri": {
         "allowlist": {

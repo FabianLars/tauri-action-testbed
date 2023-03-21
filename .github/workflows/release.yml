@@ -30,7 +30,7 @@ jobs:
         run: npm install
       - run: cargo check
         working-directory: tauri-project/src-tauri/
-      - uses: tauri-apps/tauri-action@fix/tauri-dir-resolution
+      - uses: tauri-apps/tauri-action@dev
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
