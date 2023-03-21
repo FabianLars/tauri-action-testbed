@@ -19,6 +19,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
+          cache: pnpm
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7.x.x
       - name: install Rust stable
         uses: dtolnay/rust-toolchain@stable
       - name: install dependencies (ubuntu only)
@@ -27,9 +31,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf
       - name: install app dependencies and build it
-        run: npm install
-      - run: cargo check
-        working-directory: tauri-project/src-tauri/
+        run: pnpm install
+      #- run: cargo check
+      #  working-directory: tauri-project/src-tauri/
       - uses: tauri-apps/tauri-action@dev
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -39,6 +43,8 @@ jobs:
           releaseName: 'App v__VERSION__'
           releaseBody: 'See the assets to download this version and install.'
           releaseDraft: true
+          includeDebug: true
+          includeRelease: false
           prerelease: false
-          projectPath: tauri-project
+          #projectPath: tauri-project
           #configPath: 'template/tauri.conf.json'
