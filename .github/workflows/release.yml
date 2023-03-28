@@ -34,7 +34,7 @@ jobs:
         run: pnpm install
       #- run: cargo check
       #  working-directory: tauri-project/src-tauri/
-      - uses: tauri-apps/tauri-action@dev
+      - uses: tauri-apps/tauri-action@feat/config-flag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
@@ -46,5 +46,6 @@ jobs:
           includeDebug: true
           includeRelease: false
           prerelease: false
+          args: --config custom-conf.json
           #projectPath: tauri-project
           #configPath: 'template/tauri.conf.json'
