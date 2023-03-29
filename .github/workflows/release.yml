@@ -46,6 +46,7 @@ jobs:
           includeDebug: true
           includeRelease: false
           prerelease: false
+          includeUpdaterJson: false
           #args: --config custom-conf.json
           #projectPath: tauri-project
           #configPath: 'template/tauri.conf.json'
