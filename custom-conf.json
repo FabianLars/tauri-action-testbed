@@ -1,6 +1,6 @@
 {
     "package": {
-        "productName": "Custom config arg",
-        "version": "0.9.10"
+        "productName": "rootdir",
+        "version": "0.9.20"
     }
 }
