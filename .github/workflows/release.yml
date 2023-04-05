@@ -48,4 +48,4 @@ jobs:
           prerelease: false
           includeUpdaterJson: false
           args: --config custom-conf.json
-          projectPath: ./
+          projectPath: zactualproject
