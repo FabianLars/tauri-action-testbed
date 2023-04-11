@@ -47,5 +47,5 @@ jobs:
           includeRelease: false
           prerelease: false
           includeUpdaterJson: false
-          args: --config custom-conf.json
+          args: --config ../custom-conf.json
           projectPath: zactualproject
