@@ -48,5 +48,6 @@ jobs:
           includeRelease: false
           prerelease: false
           includeUpdaterJson: true
+          updaterJsonPreferNsis: false
           projectPath: zactualproject
           tauriScript: cargo tauri
