@@ -35,7 +35,7 @@ jobs:
         run: cd zactualproject && pnpm install
       #- run: cargo check
       #  working-directory: tauri-project/src-tauri/
-      - uses: tauri-apps/tauri-action@nsis
+      - uses: tauri-apps/tauri-action@universal
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
@@ -49,5 +49,6 @@ jobs:
           prerelease: false
           includeUpdaterJson: true
           #updaterJsonPreferNsis: false
+          #updaterJsonKeepUniversal: false
           projectPath: zactualproject
           tauriScript: cargo tauri
