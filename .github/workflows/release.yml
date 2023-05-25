@@ -30,9 +30,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf
-      - run: cargo install tauri-cli --git https://github.com/tauri-apps/tauri --debug
-      - name: install app dependencies
-        run: cd zactualproject && pnpm install
+      #- run: cargo install tauri-cli --git https://github.com/tauri-apps/tauri --debug
+      #- name: install app dependencies
+      #  run: cd zactualproject && pnpm install
       #- run: cargo check
       #  working-directory: tauri-project/src-tauri/
       - uses: tauri-apps/tauri-action@fix/init
