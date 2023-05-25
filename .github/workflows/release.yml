@@ -35,6 +35,9 @@ jobs:
       #  run: cd zactualproject && pnpm install
       #- run: cargo check
       #  working-directory: tauri-project/src-tauri/
+      - run: |
+          npm install -g @tauri-apps/cli
+          tauri init --ci --app-name tauri-project
       - uses: tauri-apps/tauri-action@fix/init
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
