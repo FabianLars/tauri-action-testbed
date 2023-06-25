@@ -39,6 +39,7 @@ jobs:
       #- run: |
       #    npm install -g @tauri-apps/cli
       #    tauri init --ci --app-name tauri-project
+      - run: cargo install tauri-cli --debug --git https://github.com/tauri-apps/tauri --branch fix/zip-deflate
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -55,4 +56,4 @@ jobs:
           #updaterJsonPreferNsis: false
           #updaterJsonKeepUniversal: false
           #projectPath: zactualproject
-          #tauriScript: cargo tauri
+          tauriScript: cargo tauri
