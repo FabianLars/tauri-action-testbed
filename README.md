@@ -1,3 +1,7 @@
-# tauri-action-testbed
+# Tauri + Vanilla TS
 
-![CI](https://github.com/tauri-apps/tauri/actions/workflows/test-core.yml/badge.svg)
+This template should help get you started developing with Tauri in vanilla HTML, CSS and Typescript.
+
+## Recommended IDE Setup
+
+- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
