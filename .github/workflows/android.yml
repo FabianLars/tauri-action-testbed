@@ -1,0 +1,75 @@
+name: "Build Tauri Android App"
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7.x.x
+
+      - name: Rust stable
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - uses: Swatinem/rust-cache@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 19.8.1
+          cache: "pnpm"
+
+      - run: pnpm install
+
+      - name: Install Java 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      - name: Setup android NDK
+        run: |
+          sdkmanager "ndk;25.2.9519653" "platform-tools" "platforms;android-30"
+          echo 'NDK_HOME='$ANDROID_HOME'/ndk/25.2.9519653/' >> $GITHUB_ENV
+
+      - name: Install Tauri dependencies
+        run: >-
+          sudo apt-get update &&
+          sudo apt install -yqq
+          libayatana-appindicator3-dev
+          libwebkit2gtk-4.0-dev
+          libwebkit2gtk-4.1-dev
+          sdkmanager
+          libssl-dev
+          librsvg2-dev
+
+      - name: Install Tauri
+        run: |
+          rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
+          cargo install tauri-cli --version "^2.0.0-alpha.10" --debug
+
+      - name: Init Android App
+        env:
+          NDK_HOME: ${{ env.NDK_HOME }}
+          RANLIB: ${{ env.NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ranlib
+        run: cargo tauri android init
+
+      - name: Build Android App
+        env:
+          NDK_HOME: ${{ env.NDK_HOME }}
+          RANLIB: ${{ env.NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ranlib
+        run: cargo tauri android build
