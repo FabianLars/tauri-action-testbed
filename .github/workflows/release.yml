@@ -54,7 +54,7 @@ jobs:
           prerelease: false
           distPath: ../dist
           bundleIdentifier: com.fl.test
-          appName: ../package.json
+          appName: Some Test Name
           appVersion: ../package.json
           #includeUpdaterJson: true
           #updaterJsonPreferNsis: false
