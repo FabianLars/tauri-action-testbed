@@ -17,11 +17,11 @@ jobs:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
         with:
-          version: 7.x.x
+          version: 8.x.x
       - name: setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
           cache: pnpm
       - name: install Rust stable
         uses: dtolnay/rust-toolchain@stable
@@ -39,8 +39,8 @@ jobs:
       #- run: |
       #    npm install -g @tauri-apps/cli
       #    tauri init --ci --app-name tauri-project
-      - run: cargo install tauri-cli --debug --git https://github.com/tauri-apps/tauri --branch fix/zip-deflate
-      - uses: tauri-apps/tauri-action@v0
+      #- run: cargo install tauri-cli --debug --git https://github.com/tauri-apps/tauri --branch fix/zip-deflate
+      - uses: tauri-apps/tauri-action@fix/561
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
@@ -52,8 +52,12 @@ jobs:
           includeDebug: true
           includeRelease: false
           prerelease: false
+          distPath: ../dist
+          bundleIdentifier: com.fl.test
+          appName: ../package.json
+          appVersion: ../package.json
           #includeUpdaterJson: true
           #updaterJsonPreferNsis: false
           #updaterJsonKeepUniversal: false
           #projectPath: zactualproject
-          tauriScript: cargo tauri
+          #tauriScript: cargo tauri
